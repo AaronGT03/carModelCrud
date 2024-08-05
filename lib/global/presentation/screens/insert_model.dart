@@ -45,7 +45,8 @@ class _InsertModelState extends State<InsertModel> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Transport'),
+        title: const Text('Add Car'),
+        centerTitle: true, // Centra el título
       ),
       body: BlocListener<CarCubit, CarState>(
         listener: (context, state) {
@@ -67,58 +68,61 @@ class _InsertModelState extends State<InsertModel> {
             );
           }
         },
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                TextFormField(
-                  controller: _marcaController,
-                  decoration: const InputDecoration(labelText: 'Marca'),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Por favor ingresa la marca';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: _modeloController,
-                  decoration: const InputDecoration(labelText: 'Modelo'),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Por favor ingresa el modelo';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: _tipoController,
-                  decoration: const InputDecoration(labelText: 'Tipo'),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Por favor ingresa el tipo';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: _suspensionController,
-                  decoration: const InputDecoration(labelText: 'Suspensión'),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Por favor ingresa la suspensión';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: _submitForm,
-                  child: const Text('Add Car'),
-                ),
-              ],
+        child: Center( // Envuelve el contenido principal en un Center
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center, // Centra el contenido verticalmente
+                children: [
+                  TextFormField(
+                    controller: _marcaController,
+                    decoration: const InputDecoration(labelText: 'Marca'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor ingresa la marca';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _modeloController,
+                    decoration: const InputDecoration(labelText: 'Modelo'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor ingresa el modelo';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _tipoController,
+                    decoration: const InputDecoration(labelText: 'Tipo'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor ingresa el tipo';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _suspensionController,
+                    decoration: const InputDecoration(labelText: 'Suspensión'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor ingresa la suspensión';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: _submitForm,
+                    child: const Text('Add Car'),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
